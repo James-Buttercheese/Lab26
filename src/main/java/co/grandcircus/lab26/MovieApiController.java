@@ -65,8 +65,16 @@ public class MovieApiController {
 
 		List<Movie> movies = movieDao.findByGenreContainingIgnoreCase(genre);
 
+		if (movies.size() < 1) {
+			Movie movie = new Movie();
+			return movie;
+		}
+			
+		
 		int i = rand.nextInt(movies.size() - 1);
 		Movie movie = movies.get(i);
+		
+		
 
 		return movie;
 	}
